@@ -4,7 +4,7 @@ import MiddleSection from "./MIddleSection";
 
 export default function Home(){
     return(
-        <div className="bg-[#ffd5df]">
+        <div >
         <Banner/>
         <LatestCollection/>
         <MiddleSection/>

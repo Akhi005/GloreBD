@@ -6,11 +6,11 @@ import Footer from './Footer'
 
 function App() {
   return (
-    <>
+    <div className="bg-[#ffebf0]">
       <NavBar/>
       <Outlet />
       <Footer/>
-    </>
+    </div>
   )
 }
 

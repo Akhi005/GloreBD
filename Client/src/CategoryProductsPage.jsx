@@ -52,14 +52,23 @@ export default function CategoryProductsPage() {
       {categoryProducts.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {categoryProducts.map(product => (
-            <div key={product._id} className="p-4 rounded-lg shadow-sm">
-              <img src={product.images[0]?.secure_url} alt={product.name} className="w-full h-[400px] object-cover mb-4 rounded" />
-              <h2 className="text-xl font-semibold mb-2">{product.name}</h2> 
-              <div className='flex w-full justify-between items-center mt-8'>
-                  <Button className="text-white bg-[#c43882] rounded">অর্ডার করুন</Button>
-                  <h3 className='text-[#c43882] text-lg flex items-center'><span className='text-xl font-bold flex items-center'>৳</span>{FormatBDtaka(product.price)}</h3>
-              </div>
+          <div key={product._id} className="rounded-lg bg-white overflow-hidden">
+            <div className="w-full h-[400px] overflow-hidden ">
+              <img
+                src={product.images[0]?.secure_url}
+                alt={product.name}
+                className="w-full h-full object-cover cursor-pointer transition-transform duration-700 ease-in-out transform hover:scale-130"
+              />
             </div>
+            <h2 className="text-xl font-semibold mb-2 p-3">{product.name}</h2> 
+            <div className='flex w-full justify-between items-center p-3'>
+              <Button className="text-white bg-[#c43882] rounded">অর্ডার করুন</Button>
+              <h3 className='text-[#c43882] text-lg flex items-center font-semibold'>
+                <span className='text-xl font-bold '>৳</span>
+                {FormatBDtaka(product.price)}
+              </h3>
+            </div>
+          </div>
           ))}
         </div>
       ) : (

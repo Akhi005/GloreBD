@@ -26,7 +26,7 @@ export default function NavBar(){
     };
     return(
         <>
-        <nav className={`flex sticky top-0 ${scrolled?'bg-white':"bg-[#ffd5df]"} justify-between items-center px-20 py-4 text-md font-semibold`}>
+        <nav className={`flex sticky z-50 relative top-0 ${scrolled?'bg-white':"bg-[#ffebf0]"} justify-between items-center px-20 py-4 text-md font-semibold`}>
         <div className="flex gap-7">
            <button className="flex gap-1 items-center cursor-pointer" onClick={toggleSidebar}><HiOutlineMenuAlt1 size={24}/><p>Menu</p></button>
            <div className="flex gap-1 items-center"><IoSearch size={24}/><p>Search</p></div>
