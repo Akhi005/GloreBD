@@ -12,7 +12,7 @@ export default function CartItemsList() {
       {cartItems && cartItems.length > 0 ? (
         <div className="mt-4 overflow-y-auto" style={{ Height: 'calc(100% - 190px)' }}>
           {cartItems.map((item) => (
-            <div className='flex items-center border-b border-pink-200 pb-2 mb-2'>
+            <div key={item._id} className='flex items-center border-b border-pink-200 pb-2 mb-2'>
       {item.images?.[0]?.secure_url ? (
         <img
           src={item.images[0].secure_url}

@@ -9,6 +9,7 @@ import SearchProvider from '/src/context/SearchContext.jsx'
 import CollectionPage from './pages/Collections.jsx'
 import Checkout from '/src/pages/Checkout.jsx'
 import { CartProvider } from './context/CartItemContext.jsx'
+import SingleProduct from './pages/SingleProduct.jsx'
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,10 @@ const router = createBrowserRouter([
   },{
         path:'/checkout',
         element:<Checkout/>
-      }
+    },{
+      path:'/singleproduct/:category/:id',
+      element:<SingleProduct/>
+    }
 ])
 
 createRoot(document.getElementById('root')).render(

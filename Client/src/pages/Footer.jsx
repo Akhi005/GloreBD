@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 export default function Footer(){
     return(
-        <div className='bg-[#000000] text-white p-8 '>
+        <div className='bg-[#000000] text-white p-8 w-full'>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
             <div>
                <div className="p-5 mr-12"> <img src="https://i.ibb.co/dRqcYJN/logo-Co-RENOR5-1.webp" alt="" /></div>

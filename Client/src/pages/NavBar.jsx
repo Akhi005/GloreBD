@@ -7,14 +7,13 @@ import { Badge } from "@material-tailwind/react";
 import LeftSidebar from './LeftSideBar';
 import RightSidebar from './RightSideBar';
 import { useSearch } from '../context/SearchContext';
-import { useCart } from '../context/CartItemContext';
 
 export default function NavBar(){
     const [scrolled, setScrolled] = useState(false);
     const { setShowSearch } = useSearch();
     const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(false);
     const [isRightSidebarOpen, setIsRightSidebarOpen] = useState(false);
-    const {cartItems}=useCart()
+    const cartItems=JSON.parse(localStorage.getItem('cartItems'))||[];
     useEffect(() => {
       const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -44,8 +43,9 @@ export default function NavBar(){
           <img src="https://i.ibb.co/Xk8Zt70V/logo-Co-RENOR5.webp" alt="" width="160px" height="130px"/>
         </div>
         <div  className="flex gap-5">
-            <div  className="flex gap-1 items-center"><RiShoppingBag2Fill size={24} /><p>Shop</p></div>
-            <button className="relative cursor-pointer" onClick={toggleRightSidebar}><MdOutlineShoppingBag size={28}/><Badge className="absolute -top-3 -right-2 bg-[#c43882] text-white rounded-full h-5 w-5 flex items-center justify-center text-xs font-bold" placement="bottom-end" content={cartItems.length||0} color="bg-red-500" overlap="circular"></Badge></button>
+            <div  className="flex gap-1 items-center text-[#c43882]"><RiShoppingBag2Fill size={24} /><p>Shop</p></div>
+            <button className="relative cursor-pointer" onClick={toggleRightSidebar}><MdOutlineShoppingBag size={28}/><Badge className="absolute -top-3 -right-2 bg-[#c43882] text-white rounded-full h-5 w-5 flex items-center justify-center text-xs font-bold" placement="bottom-end" 
+            content={cartItems.length||0} color="bg-red-500" overlap="circular"></Badge></button>
         </div>
        </nav>
        <LeftSidebar isOpen={isLeftSidebarOpen} onClose={toggleLeftSidebar} />

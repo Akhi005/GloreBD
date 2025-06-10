@@ -30,7 +30,7 @@ export default function Sidebar({ isOpen, onClose }) {
       )}
       <div
         className={`
-          pt-8 fixed top-0 left-0 h-full w-84 bg-white shadow-lg z-50
+          pt-8 fixed top-0 left-0 h-full w-[90%] max-w-xs bg-white shadow-lg z-50
           transform transition-transform duration-400 ease-in-out
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}`} >
         <div className="p-4 flex justify-between items-center font-bold">

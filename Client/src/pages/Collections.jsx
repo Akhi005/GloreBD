@@ -3,19 +3,19 @@ import { useSearch } from '../context/SearchContext';
 import ClearIcon from '@mui/icons-material/Clear';
 import Divider from '@mui/material/Divider';
 import { IoSearch } from "react-icons/io5";
-import axios from 'axios';
 import FormatBDtaka from '../utils/FormatBDtaka';
 import { Checkbox } from '@material-tailwind/react';
 import PriceSlider from '../utils/PriceSlider';
 import RightSidebar from './RightSideBar'; 
 import { useCart } from '../context/CartItemContext';
+import FetchData from '../utils/FetchData';
+import { Link } from 'react-router';
 
 export default function CollectionPage() {
   const { showSearch } = useSearch();
   const [value, setValue] = useState('');
-  const [fetchData, setFetchData] = useState([]);
+   const { data: fetchData, loading, error } = FetchData();
   const [filteredData, setFilteredData] = useState([]);
-  const [error, setError] = useState(null);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [priceRange, setPriceRange] = useState([0, 1000]);
   const [sortOption, setSortOption] = useState('');
@@ -23,22 +23,11 @@ export default function CollectionPage() {
  const {addToCart}=useCart();
   const categories = ["Category 1", "Category 2", "Category 3", "Category 4"];
 
-  useEffect(() => {
-    const FetchData = async () => {
-      try {
-        const res = await axios.get('https://glore-bd-backend-node-mongo.vercel.app/api/product');
-        if (res.status === 200) {
-          setFetchData(res.data.data);
-          setFilteredData(res.data.data);
-        } else {
-          setError("Failed to retrieve products.");
-        }
-      } catch {
-        setError("An unexpected error occurred while fetching all products.");
-      }
-    };
-    FetchData();
-  }, []);
+ useEffect(() => {
+    if (fetchData.length > 0) {
+      setFilteredData(fetchData);
+    }
+  }, [fetchData]);
 
   useEffect(() => {
     let currentFiltered = [...fetchData];
@@ -114,8 +103,9 @@ export default function CollectionPage() {
           </div>
         </div>
       )}
-      {error && <p className='text-red-500 text-lg'>{error}</p>}
-      <div className='flex w-full'>
+       {loading && <p>Loading...</p>}
+      {error && <p className="text-red-500 text-lg">{error}</p>}
+      <div className='flex flex-col lg:flex-row w-full'>
         <div className='w-64 border h-fit border-gray-300 rounded-lg p-5'>
           <h3 className='font-bold'>Filter by Category</h3>
           <ul>
@@ -138,7 +128,7 @@ export default function CollectionPage() {
           </div>
         </div>
         <div className="ml-6 flex-1">
-          <div className='w-full flex justify-between items-center'>
+          <div className='w-full flex flex-col lg:flex-row justify-between items-center'>
             <div className="flex items-center justify-start">
               <h1 className="text-[#6b7280] text-xl pb-5 font-semibold">ALL <span className="text-[#374151]">
                 COLLECTIONS</span></h1>
@@ -160,11 +150,12 @@ export default function CollectionPage() {
               {searchedData.map(product => (
                 <div key={product._id} className="rounded-xl bg-white">
                   <div className="w-full overflow-hidden rounded-t-xl">
-                    <img
+                    <Link to={`/singleproduct/${product.category.name}/${product._id}`}><img
                       src={product.images[0]?.secure_url}
                       alt={product.name}
+                      
                       className="w-full h-[300px] object-cover cursor-pointer transition-transform duration-700 ease-in-out transform hover:scale-110"
-                    />
+                    /></Link>
                   </div>
                   <h2 className="text-xl font-semibold mb-2 p-3">{product.name}</h2>
                   <div className='flex w-full justify-between items-center p-3'>

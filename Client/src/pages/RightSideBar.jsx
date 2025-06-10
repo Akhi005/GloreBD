@@ -17,7 +17,7 @@ export default function RightSidebar({ isOpen, onClose }) {
       )}
       
       <div
-        className={`p-3 fixed top-0 right-0 h-full w-84 bg-white shadow-lg z-50
+        className={`p-3 fixed top-0 right-0 h-full w-[90%] max-w-xs bg-white shadow-lg z-50
           transform transition-transform duration-400 ease-in-out
           ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
             
