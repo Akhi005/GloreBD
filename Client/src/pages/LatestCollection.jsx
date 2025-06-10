@@ -1,5 +1,5 @@
 import Divider from "@mui/material/Divider";
-import WomenClothing from "./WomenClothing";
+import WomenClothing from "/src/pages/WomenClothing";
 
 export default function LatestCollection() {
   return (

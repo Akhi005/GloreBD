@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Divider from "@mui/material/Divider";
-import FormatBDtaka from './utils/FormatBDtaka'
+import FormatBDtaka from '../utils/FormatBDtaka'
 import { Button } from "@material-tailwind/react";
 
 export default function CategoryProductsPage() {

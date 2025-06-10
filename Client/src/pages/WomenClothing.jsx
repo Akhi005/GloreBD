@@ -1,7 +1,7 @@
 import React, {use } from 'react'; 
 import axios from 'axios'
 import { Button } from "@material-tailwind/react";
-import FormatBDtaka from './utils/FormatBDtaka'
+import FormatBDtaka from '/src/utils/FormatBDtaka'
 
 async function fetchDataForWomenClothing() {
   const response = await axios.get('https://glore-bd-backend-node-mongo.vercel.app/api/product'); 
