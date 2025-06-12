@@ -38,11 +38,11 @@ export default function NavBar() {
     <>
       <nav className={`flex font-bold items-center justify-between px-4 lg:px-20 py-3 sticky top-0 z-50 transition-colors duration-300 ${scrolled ? 'bg-white' : 'bg-[#ffd5df]'}`}>
         <div className="flex items-center gap-4 sm:gap-6">
-          <button onClick={toggleLeftSidebar} className="flex items-center gap-1 text-sm sm:text-base">
+          <button onClick={toggleLeftSidebar} className="flex cursor-pointer items-center gap-1 text-sm sm:text-base">
             <HiOutlineMenuAlt1 size={22} />
             <span className="hidden sm:inline">Menu</span>
           </button>
-          <Link to="/collections"><button onClick={() => setShowSearch(true)} className="flex items-center gap-1 text-sm sm:text-base">
+          <Link to="/collections"><button onClick={() => setShowSearch(true)} className="cursor-pointer flex items-center gap-1 text-sm sm:text-base">
             <IoSearch size={22} />
             <span className="hidden sm:inline">Search</span>
           </button></Link>

@@ -63,8 +63,13 @@ export default function CollectionPage() {
     );
   };
 
-  const handlePriceRangeChange = (newValue) => {
-    setPriceRange(newValue);
+  const handlePriceRangeChange = (event, newValue, activeThumb) => {
+    const minDistance = 10;
+    if (activeThumb === 0) {
+      setPriceRange([Math.min(newValue[0], priceRange[1] - minDistance), priceRange[1]]);
+    } else {
+      setPriceRange([priceRange[0], Math.max(newValue[1], priceRange[0] + minDistance)]);
+    }
   };
 
   const handleSort = (e) => {
@@ -206,7 +211,7 @@ export default function CollectionPage() {
                   {value ? "No products match your search" : "No products found"}
                 </p>
                 <button 
-                  className="mt-4 text-[#c43882] hover:underline"
+                  className="mt-4 text-[#c43882] cursor-pointer"
                   onClick={() => {
                     setValue('');
                     setSelectedCategories([]);
