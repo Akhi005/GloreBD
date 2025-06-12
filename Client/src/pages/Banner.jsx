@@ -1,5 +1,5 @@
 import { Button } from "@material-tailwind/react";
-import OrderButton from "../utils/OrderButton"
+import { Link } from "react-router"
 
 export default function Banner() {
   return (
@@ -16,7 +16,9 @@ export default function Banner() {
           <p className="hidden sm:block">আপনার প্রিয় ফ্যাশন স্টাইল খুঁজে নিন আর নিজেকে সাজান অনন্যভাবে। ❤️</p>
         </div>
 
-        <OrderButton/>
+        <Link to='/collections'>
+          <Button className="text-white cursor-pointer bg-[#c43882] text-lg mt-8 px-6 py-3 rounded-xl">অর্ডার করুন</Button>
+        </Link>
       </div>
       <div className="w-full lg:w-[480px] flex justify-center">
         <img
