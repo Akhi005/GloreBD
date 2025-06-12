@@ -18,7 +18,6 @@ export default function CategoryProductsPage() {
         setError(null);
         try {
           const res = await axios.get(`https://glore-bd-backend-node-mongo.vercel.app/api/product`);
-          console.log(res.data.data)
           if (res.status === 200 && res.data && Array.isArray(res.data.data)) {
             const filteredProducts = res.data.data.filter(product =>
             product.category && product.category._id === categoryId);
@@ -41,7 +40,6 @@ export default function CategoryProductsPage() {
   if (loading) {
     return <div className="text-center p-8">Loading products...</div>;
   }
-  console.log(categoryProducts)
   if (error) {
     return <div className="text-center p-8 text-red-500">{error}</div>;
   }
