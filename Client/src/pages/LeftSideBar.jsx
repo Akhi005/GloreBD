@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { IoCloseOutline } from 'react-icons/io5';
 import Divider from '@mui/material/Divider'; 
-import axios from 'axios';
 import { Link } from "react-router";
+import fetchProducts from '../utils/FetchData'
 
 export default function Sidebar({ isOpen, onClose }) {
   const [btn, setBtn] = useState(false);
@@ -11,10 +11,8 @@ export default function Sidebar({ isOpen, onClose }) {
   useEffect(() => {
     const FetchData = async () => {
       try {
-        const res = await axios.get('https://glore-bd-backend-node-mongo.vercel.app/api/product');
-        if (res.status === 200) {
-          setFetchData(res.data.data);
-        }
+        const res = await fetchProducts();
+          setFetchData(res);
       } catch {
         alert("An unexpected error has occurred.");
       }

@@ -1,6 +1,5 @@
-import React, {use} from 'react';
+import  {use} from 'react';
 import { Link } from 'react-router-dom';
-import RightSidebar from './RightSideBar';
 import FormatBDtaka from '/src/utils/FormatBDtaka';
 import { getProducts } from '../utils/FetchData'
 import OrderButton from '../utils/OrderButton'
@@ -9,12 +8,10 @@ const WomenClothing = ({ products: propProducts }) => {
   const internalProducts = use(getProducts());
   const products = propProducts || internalProducts;
 
-
   return (
     <div className='px-12'>
       <h2 className='text-2xl font-bold text-left'>Women Clothing</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-8">
-      
         {products?.map((product) => (
           <div
             key={product._id}
