@@ -10,6 +10,8 @@ import CollectionPage from './pages/Collections.jsx'
 import Checkout from '/src/pages/Checkout.jsx'
 import { CartProvider } from './context/CartItemContext.jsx'
 import SingleProduct from './pages/SingleProduct.jsx'
+import About from './pages/About.jsx'
+import Contact from './pages/Contact.jsx'
 
 const router = createBrowserRouter([
   {
@@ -33,7 +35,13 @@ const router = createBrowserRouter([
     },{
       path:'/singleproduct/:category/:id',
       element:<SingleProduct/>
-    }
+    },{
+      path:"/about",
+    element:<About/>
+  },{
+      path:"/contact",
+    element:<Contact/>
+  }
 ])
 
 createRoot(document.getElementById('root')).render(

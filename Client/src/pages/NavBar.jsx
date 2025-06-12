@@ -10,7 +10,7 @@ import { useSearch } from '../context/SearchContext';
 import { Link } from 'react-router';
 import { useCart } from '../context/CartItemContext';
 
-export default function NavBar() {
+export default function NavBar({color}) {
   const [scrolled, setScrolled] = useState(false);
   const { setShowSearch } = useSearch();
   const [isLeftSidebarOpen, setIsLeftSidebarOpen] = useState(false);
@@ -36,7 +36,8 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className={`flex font-bold items-center justify-between px-4 lg:px-20 py-3 sticky top-0 z-50 transition-colors duration-300 ${scrolled ? 'bg-white' : 'bg-[#ffd5df]'}`}>
+       <nav className={`flex font-bold items-center justify-between px-4 lg:px-20 py-3 sticky top-0 z-50 transition-colors duration-300 ${
+         scrolled ? 'bg-white' : color ? `bg-[${color}]` : 'bg-[#ffd5df]'}`}>
         <div className="flex items-center gap-4 sm:gap-6">
           <button onClick={toggleLeftSidebar} className="flex cursor-pointer items-center gap-1 text-sm sm:text-base">
             <HiOutlineMenuAlt1 size={22} />
