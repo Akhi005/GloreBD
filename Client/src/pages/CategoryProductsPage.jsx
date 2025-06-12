@@ -53,11 +53,13 @@ export default function CategoryProductsPage() {
           {categoryProducts.map(product => (
           <div key={product._id} className="rounded-lg bg-white overflow-hidden">
             <div className="w-full h-[400px] overflow-hidden ">
-            <Link to={`/singleproduct/${product.category.name}/${product._id}`}><img
+            <Link to={`/singleproduct/${product.category.name}/${product._id}`}>
+            <img
                 src={product.images[0]?.secure_url}
                 alt={product.name}
                 className="w-full h-full object-cover cursor-pointer transition-transform duration-700 ease-in-out transform hover:scale-130"
-              /></Link>
+              />
+              </Link>
             </div>
             <h2 className="text-xl font-semibold mb-2 p-3">{product.name}</h2> 
             <div className='flex w-full justify-between items-center p-3'>
