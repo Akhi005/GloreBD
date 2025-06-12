@@ -31,8 +31,8 @@ export default function CartItemsList() {
           <p>X</p>
         <div className="flex items-center mt-1">
           <Counter
-            initialValue={item.quantity || 1}
-            onQuantityChange={(newQuantity) => updateQuantity(item._id, newQuantity)}
+            value={item.quantity || 1}
+            onChange={(newQuantity) => updateQuantity(item._id, newQuantity)}
           />
         </div>
         </div>

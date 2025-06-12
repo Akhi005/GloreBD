@@ -4,7 +4,7 @@ import Footer from '/src/pages/Footer'
 
 function App() {
   return (
-      <div className="min-h-screen flex flex-col bg-[#ffebf0]">
+      <div className="min-h-screen flex flex-col bg-[#ffd5df]">
       <NavBar/>
       <main className="flex-grow">
          <Outlet />

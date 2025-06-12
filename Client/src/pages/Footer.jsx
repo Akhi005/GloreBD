@@ -7,10 +7,13 @@ export default function Footer(){
         <div className='bg-[#000000] text-white p-8 w-full'>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
             <div>
-               <div className="p-5 mr-12"> <img src="https://i.ibb.co/dRqcYJN/logo-Co-RENOR5-1.webp" alt="" /></div>
-                <p className="text-sm">আমাদের কালেকশন আপনাকে দেবে ফ্যাশনের আধুনিকতা এবং ঐতিহ্যের একটি নিখুঁত সংমিশ্রণ।</p>
+               <div className="p-5 w-64"> <img src="https://i.ibb.co/dRqcYJN/logo-Co-RENOR5-1.webp" alt="" /></div>
+                <div className="text-xs lg:text-sm md:text-sm">
+                     <p>আমাদের কালেকশন আপনাকে দেবে ফ্যাশনের </p>
+                     <p>আধুনিকতা এবং ঐতিহ্যের একটি নিখুঁত সংমিশ্রণ।</p>
+                </div>
             </div>
-            <div className="pl-5 font-semibold">
+            <div className="font-semibold">
                 <h2 className="py-3 text-xl font-semibold">Explore More</h2>
                 <div className="text-[#6b7280]"><p className="hover:text-[#c43882] cursor-pointer">New Arrivals</p>
                 <p className="hover:text-[#c43882] cursor-pointer">About Us</p>

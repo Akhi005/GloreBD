@@ -1,46 +1,49 @@
-import React, {use } from 'react'; 
-import axios from 'axios'
-import { Button } from "@material-tailwind/react";
-import FormatBDtaka from '/src/utils/FormatBDtaka'
+import React, {use} from 'react';
+import { Link } from 'react-router-dom';
+import RightSidebar from './RightSideBar';
+import FormatBDtaka from '/src/utils/FormatBDtaka';
+import { getProducts } from '../utils/FetchData'
+import OrderButton from '../utils/OrderButton'
 
-async function fetchDataForWomenClothing() {
-  const response = await axios.get('https://glore-bd-backend-node-mongo.vercel.app/api/product'); 
-  if (response.status!=200) {
-    throw new Error('Failed to fetch data');
-  }
-  return response.data;
-}
+const WomenClothing = ({ products: propProducts }) => {
+  const internalProducts = use(getProducts());
+  const products = propProducts || internalProducts;
 
-let womenClothingPromise = null; 
 
-function getWomenClothingData() {
-  if (womenClothingPromise === null) {
-    womenClothingPromise = fetchDataForWomenClothing();
-  }
-  return womenClothingPromise;
-}
-
-export default function WomenClothing() {
-  const apiResponse = use(getWomenClothingData());
   return (
-    <>
-      <h1 className='font-bold text-xl my-3 text-left ml-12 mt-8'>Women's Clothing</h1>
-      {apiResponse.data && apiResponse.data.length > 0 ? (
-        <ul className='flex gap-5 px-12 h-[520px] '>
-          {apiResponse.data.map(item => (
-            <li key={item._id} className='flex-1 bg-white rounded-2xl '>
-                <img className='h-[400px] w-full rounded-t-2xl' src={`${item.images[0].secure_url}`}  alt=""/> 
-                <h2 className='font-bold text-lg pt-2 pb-5'>{item.name}</h2>
-                <div className='flex w-full justify-between px-5 items-center'>
-                    <Button className="text-white bg-[#c43882] rounded-xl">অর্ডার করুন</Button>
-                    <h3 className='text-[#c43882] text-lg flex items-center'><span className='text-xl font-bold flex items-center'>৳</span>{FormatBDtaka(item.price)}</h3>
-                </div>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No clothing items found.</p>
-      )}
-    </>
+    <div className='px-12'>
+      <h2 className='text-2xl font-bold text-left'>Women Clothing</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 py-8">
+      
+        {products?.map((product) => (
+          <div
+            key={product._id}
+            className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow" >
+            <Link to={`/singleproduct/${product.category?.name}/${product._id}`}>
+              <div className="h-[500px] overflow-hidden rounded-t-xl">
+              <img
+                src={product.images[0]?.secure_url}
+                alt={product.name}
+                className="w-full h-full object-cover transition-transform duration-500 hover:scale-115"
+              />
+            </div>
+            </Link>
+            <div className="p-4">
+              <h3 className="font-semibold text-lg mb-2 line-clamp-2">
+                {product.name}
+              </h3>
+              <div className="flex justify-between items-center">
+                <OrderButton product={product} quantity={ product.quantity} />
+                <span className="text-[#c43882] font-semibold">
+                  ৳{FormatBDtaka(product.price)}
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
-}
+};
+
+export default WomenClothing;
