@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Divider from "@mui/material/Divider";
 import FormatBDtaka from '../utils/FormatBDtaka'
-import { Button } from "@material-tailwind/react";
 import OrderButton from '../utils/OrderButton'
 
 export default function CategoryProductsPage() {
@@ -63,7 +62,7 @@ export default function CategoryProductsPage() {
             </div>
             <h2 className="text-xl font-semibold mb-2 p-3">{product.name}</h2> 
             <div className='flex w-full justify-between items-center p-3'>
-              <OrderButton/>
+                <OrderButton product={product} />
               <h3 className='text-[#c43882] text-lg flex items-center font-semibold'>
                 <span className='text-xl font-bold '>৳</span>
                 {FormatBDtaka(product.price)}
